@@ -6,7 +6,6 @@ import ru.sevastyanov.test.param.InOutParam;
 import java.math.BigDecimal;
 
 import static ru.sevastyanov.test.ClassLogger.format;
-import static ru.sevastyanov.test.ClassLogger.formatNumber;
 import static ru.sevastyanov.test.ClassLogger.info;
 import static ru.sevastyanov.test.param.Param.of;
 import static ru.sevastyanov.test.param.Param.ofEmpty;

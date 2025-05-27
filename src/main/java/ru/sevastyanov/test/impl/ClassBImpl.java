@@ -19,8 +19,6 @@ public class ClassBImpl implements ClassB {
 
   public static final String CALCULATOR_VERSION = "calc v1.0";
 
-//  private static final ThreadLocal<ClassA> classA = ThreadLocalHolder.getClassAThreadLocal();
-
   public ClassBImpl() {
     initClass();
   }
