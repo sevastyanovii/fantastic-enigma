@@ -22,4 +22,10 @@ public class ClassLogger {
     return new DecimalFormat( ".#", en).format(decimal.doubleValue());
   }
 
+  public static String format(BigDecimal decimal) {
+    var decimalFormat = decimal.remainder(BigDecimal.ONE).doubleValue() == 0 ? "#" : "#.##";
+    DecimalFormatSymbols en = DecimalFormatSymbols.getInstance(Locale.ENGLISH);
+    return new DecimalFormat( decimalFormat, en).format(decimal.doubleValue());
+  }
+
 }

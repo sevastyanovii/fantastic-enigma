@@ -12,6 +12,7 @@ import java.util.Optional;
 
 import static java.math.BigDecimal.ZERO;
 import static ru.sevastyanov.test.CalcUtils.getParameter;
+import static ru.sevastyanov.test.ClassLogger.formatNumber;
 import static ru.sevastyanov.test.ClassLogger.info;
 
 public class ClassBImpl implements ClassB {
@@ -35,7 +36,7 @@ public class ClassBImpl implements ClassB {
     var rate = getParameter(params, 1, ThreadLocalHolder.getClassA().map(ClassA::getDefaultRate).orElseThrow());
     var commAmt = Optional.ofNullable(getParameter(params, 2, (BigDecimal)null)).orElse(ZERO);
     outInterest.setValue(Optional.of(amount).map(a -> a.multiply(rate)).map(res -> res.subtract(commAmt)).get());
-    info("do calc interest for amount=%s; tariff=%s; rate=%s; p_comm_amt=%s", amount, tariff, rate, ZERO.equals(commAmt) ? "" : commAmt);
+    info("do calc interest for amount=%s; tariff=%s; rate=%s; p_comm_amt=%s", amount, tariff, formatNumber(rate), ZERO.equals(commAmt) ? "" : commAmt);
   }
 
 }

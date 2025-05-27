@@ -29,7 +29,7 @@ public class ClassAImpl implements ClassA {
 
   @Override
   public void setDefaultRate(BigDecimal newDefaultRate) {
-    info("change default rate from %s to %s", getDefaultRate(), newDefaultRate);
+    info("change default rate from %s to %s", formatNumber(getDefaultRate()), formatNumber(newDefaultRate));
     defaultRate = newDefaultRate;
   }
 
@@ -40,13 +40,14 @@ public class ClassAImpl implements ClassA {
 
   @Override
   public BigDecimal getSpecialtRate() {
+    info("special rate requested");
     return new BigDecimal("0.2");
   }
 
   @Override
   public BigDecimal calcSpecialInterest(BigDecimal amount, Param<BigDecimal> ... rate) {
     var vAmt = InOutParam.of(new BigDecimal("1000"));
-    var vRate = Optional.ofNullable(CalcUtils.getParameter(rate, 0, getDefaultRate())).orElse(getSpecialtRate());
+    var vRate = Optional.ofNullable(CalcUtils.getParameter(rate, 0, getDefaultRate())).orElseGet(this::getSpecialtRate);
     ThreadLocalHolder.getClassB().ifPresent(classB -> classB.doCalcInterest(amount, vAmt, Param.ofEmpty(), Param.of(vRate), Param.ofEmpty()));
     return vAmt.getValue();
   }
