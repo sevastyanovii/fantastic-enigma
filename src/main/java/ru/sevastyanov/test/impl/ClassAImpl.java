@@ -2,8 +2,8 @@ package ru.sevastyanov.test.impl;
 
 import ru.sevastyanov.test.CalcUtils;
 import ru.sevastyanov.test.ClassA;
-import ru.sevastyanov.test.param.InOutParam;
 import ru.sevastyanov.test.ThreadLocalHolder;
+import ru.sevastyanov.test.param.InOutParam;
 import ru.sevastyanov.test.param.Param;
 
 import java.math.BigDecimal;
@@ -17,12 +17,11 @@ public class ClassAImpl implements ClassA {
 
   private BigDecimal defaultRate = null;
 
-  static {
+  public static void init() {
     info("init package ClassA");
   }
 
   public ClassAImpl() {
-    ThreadLocalHolder.setB(new ClassBImpl());
     info("using calculator: %s", CALCULATOR_VERSION);
     initDefaultRate();
   }

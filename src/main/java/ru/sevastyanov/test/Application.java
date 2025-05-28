@@ -1,6 +1,7 @@
 package ru.sevastyanov.test;
 
 import ru.sevastyanov.test.impl.ClassAImpl;
+import ru.sevastyanov.test.impl.ClassBImpl;
 import ru.sevastyanov.test.param.InOutParam;
 
 import java.math.BigDecimal;
@@ -26,6 +27,8 @@ public class Application {
 
   public static void main(String[] args) {
     info("*** TEST1");
+    ClassAImpl.init();
+    ThreadLocalHolder.setB(new ClassBImpl());
     var classA = new ClassAImpl();
     ThreadLocalHolder.setA(classA);
 
