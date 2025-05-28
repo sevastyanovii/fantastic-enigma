@@ -11,18 +11,6 @@ import static ru.sevastyanov.test.ClassLogger.info;
 import static ru.sevastyanov.test.param.Param.of;
 import static ru.sevastyanov.test.param.Param.ofEmpty;
 
-/**
- * Описание проблемы:
- * <br>Чтобы обеспечить вывод
- * <pre>
- * init package ClassA
- * init package ClassB
- * using default rate = not defined
- * using calculator: calc v1.0
- * </pre>
- * пришлось создавать объект {@link ru.sevastyanov.test.impl.ClassBImpl} внутри конструктора {@link ClassAImpl},
- * так как невозможно инициализировать статику класса, не создав сам класс.
- */
 public class Application {
 
   public static void main(String[] args) {
